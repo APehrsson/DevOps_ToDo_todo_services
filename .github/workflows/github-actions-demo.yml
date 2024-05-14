@@ -18,6 +18,7 @@ jobs:
       - run: echo "🍏 This job's statu is ${{ job.status }}."
       - name: Post to a Slack channel
         id: slack
+        if: success()
         uses: slackapi/slack-github-action@v1.26.0
         with:
           # Slack channel id, channel name, or user id to post message.
