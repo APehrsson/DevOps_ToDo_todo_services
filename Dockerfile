@@ -12,6 +12,10 @@ RUN npm install -g typescript
 # Copy source code
 COPY . .
 
+# Set environment variables
+ARG USER_SERVICE_URL
+ENV USER_SERVICE_URL=${USER_SERVICE_URL}
+
 # Build the project
 RUN npm run build
 
