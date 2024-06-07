@@ -9,6 +9,6 @@
     "typeRoots": ["./types", "./node_modules/@types"],
     "types": ["jest"],
     },
-    "include": ["./src/**/*.tsx", "./src/**/*.ts"],
+    "include": ["./src/**/*.tsx", "./src/**/*.ts", "src/controllers/todos/config.ts"],
   "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
 }
