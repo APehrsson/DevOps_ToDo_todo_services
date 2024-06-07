@@ -1,4 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
+import config from '../controllers/todos/config';
+
+const userServiceUrl = config.userServiceUrl;
 
 export const verifyTokenMiddleware = async (req: Request, res: Response, next: NextFunction) => {
 
@@ -13,7 +16,7 @@ export const verifyTokenMiddleware = async (req: Request, res: Response, next: N
     }
 
     try {
-        const response = await fetch(`http://localhost:4001/private/session`, {
+        const response = await fetch(`${userServiceUrl}/private/session`, {
             headers: {
                 'Authorization': jwtToken,
                 'TODOS-API-KEY': todosAPIKey
