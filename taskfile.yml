@@ -1,0 +1,17 @@
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task --list
+    silent: true
+    description: "Show available tasks"
+  analyze:
+      desc: "Run SonarQube analysis"
+      cmds:
+        - sonar-scanner
+      env:
+        SONAR_HOST_URL: http://localhost:9000
+        SONAR_LOGIN: sqp_ec01d225b333a8b91544e1143ec0ce7ec36a2809
+      preconditions:
+        - "command -v sonar-scanner > /dev/null || echo 'sonar-scanner is not installed. Please install it first.'"
