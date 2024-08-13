@@ -1,24 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: todo-service-deployment
+  name: todo-services-deployment
   labels:
-    app: todo-service
+    app: todo-services
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: todo-service
+      app: todo-services
   template:
     metadata:
       labels:
-        app: todo-service
+        app: todo-services
     spec:
       containers:
-      - name: todo-service
-        image: your-docker-repo/todo-service:latest  # Replace with your Docker image
+      - name: todo-services
+        image: your-dockerhub-username/todo-services:latest
         ports:
-        - containerPort: 3000
+        - containerPort: 4000
         env:
-        - name: MONGO_URL
-          value: "mongodb://mongo-service:27017/todos"  # MongoDB connection string
+        - name: TODOS_API_KEY
+          value: "8fcbdb72c9d74a36be7413388341a6c0d547dd2ade2a4ee2aa13e9b16c12a63b"
+        - name: USER_SERVICE_URL
+          value: "http://todo-user-services:4001/"
